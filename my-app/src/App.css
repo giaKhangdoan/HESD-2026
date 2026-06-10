@@ -1,0 +1,44 @@
+.App {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex-grow: 1;
+}
+
+.placeholder-section {
+  padding: 100px 0;
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+  width: 100%;
+  text-align: center;
+}
+
+.placeholder-text {
+  color: var(--text-secondary);
+  font-family: var(--font-mono);
+  margin-top: 20px;
+}
+
+.footer {
+  padding: 40px 0;
+  text-align: center;
+  border-top: 1px solid rgba(0, 212, 255, 0.1);
+  background: rgba(5, 11, 20, 0.8);
+}
+
+.footer p {
+  color: var(--text-secondary);
+  font-size: 14px;
+}
