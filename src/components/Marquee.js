@@ -1,5 +1,5 @@
 import React from 'react';
-import { motion } from 'motion/react';
+
 import { Mail, Paperclip, Building2 } from 'lucide-react';
 
 const skills = [
