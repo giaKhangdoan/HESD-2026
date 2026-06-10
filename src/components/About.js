@@ -1,30 +1,60 @@
 import React from 'react';
 import { motion } from 'motion/react';
+import { Quote } from 'lucide-react';
 
 const teamMembers = [
-  { name: 'Dr. Alan Walker', role: 'Chief AI Architect', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Alan&backgroundColor=b6e3f4' },
-  { name: 'Sarah Jenkins', role: 'Context Engineering Lead', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Sarah&backgroundColor=c0aede' },
-  { name: 'David Chen', role: 'Harness & Testing Expert', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=David&backgroundColor=b1e5d3' },
-  { name: 'Elena Rostova', role: 'LLM Ops Engineer', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Elena&backgroundColor=e2e8f0' }
+  { name: '@giaKhangdoan', role: 'Core Maintainer', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=giaKhangdoan&backgroundColor=b6e3f4' },
+  { name: '@alex_dev', role: 'Template Creator', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=alex&backgroundColor=c0aede' },
+  { name: '@harness_master', role: 'PR Contributor', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=harness&backgroundColor=b1e5d3' },
+  { name: '@ai_builder', role: 'PR Contributor', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=ai&backgroundColor=e2e8f0' }
 ];
 
 const About = () => {
   return (
     <section id="about" className="w-full px-4 py-16">
       <div className="max-w-[1200px] mx-auto">
+        
+        {/* The Role of the Human Manifesto */}
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="max-w-4xl mx-auto bg-slate-50 border border-slate-200/60 rounded-[32px] p-10 md:p-14 mb-24 relative overflow-hidden"
+        >
+          <Quote className="absolute -top-4 -left-4 w-32 h-32 text-slate-200/50 rotate-12" />
+          <div className="relative z-10 md:pl-8">
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-50 text-blue-600 font-mono text-xs font-bold uppercase tracking-wider mb-6 border border-blue-100">
+              Community Manifesto
+            </div>
+            <h3 className="font-display text-[28px] md:text-[36px] font-semibold text-[#0a1b33] mb-6 leading-tight">
+              The Role of the Human
+            </h3>
+            <div className="space-y-6 font-sans text-lg md:text-xl text-slate-600 leading-relaxed">
+              <p>
+                Harness Engineering không sinh ra để loại bỏ lập trình viên. Một AI không có "sự xấu hổ" khi viết ra một function spaghetti dài 300 dòng, cũng không hiểu ngữ cảnh văn hóa hay mục tiêu kinh doanh đằng sau tính năng đó.
+              </p>
+              <p className="font-medium text-[#0a1b33]">
+                Xây dựng Harness chính là cách con người "số hóa" kinh nghiệm, kỷ luật và trực giác của mình để điều hướng AI. 
+              </p>
+              <p>
+                Harness giúp tập trung sức người vào những nơi quan trọng nhất, biến lập trình viên từ <span className="line-through text-slate-400">người gõ code</span> thành <strong className="text-blue-600">người thiết kế hệ thống và kiểm soát chất lượng</strong>.
+              </p>
+            </div>
+          </div>
+        </motion.div>
+
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-20 max-w-3xl mx-auto"
+          className="text-center mb-16 max-w-3xl mx-auto"
         >
           <h2 className="font-display text-[32px] md:text-[40px] font-semibold text-[#0a1b33] mb-6">
-            Về Chúng Tôi
+            Hall of Fame
           </h2>
           <p className="font-sans text-lg text-slate-500 leading-relaxed">
-            Sứ mệnh của chúng tôi là định hình lại tư duy phát triển phần mềm cho kỷ nguyên AI. 
-            Thay vì xem AI là một trợ lý viết code thụ động, HESD 2026 đào tạo kỹ sư cách thiết kế 
-            toàn bộ vòng đời sản phẩm từ góc nhìn <span className="font-semibold text-[#0a1b33]">"AI-Native"</span>.
+            Tôn vinh những cá nhân đóng góp nổi bật nhất vào mã nguồn và kiến trúc của cộng đồng. 
+            Nền tảng Harness Engineering được xây dựng và duy trì bởi <span className="font-semibold text-[#0a1b33]">trí tuệ tập thể</span>.
           </p>
         </motion.div>
 

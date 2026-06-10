@@ -52,12 +52,12 @@ const WhyHarness = () => {
             <div className="relative">
               <Sparkles className="absolute -left-6 -top-4 w-8 h-8 text-yellow-400 opacity-30" />
               <blockquote className="font-sans text-xl md:text-2xl text-[#0a1b33] leading-relaxed mb-6 font-medium">
-                "Cùng một model, cùng một task, nhưng chỉ cần thay đổi thiết kế môi trường xung quanh nó, hiệu suất xử lý và độ chính xác có thể tăng ngoạn mục."
+                "Model là thứ suy nghĩ. Harness là thứ mà nó suy nghĩ VỀ. Hiểu đúng sự khác biệt này - bạn thắng."
               </blockquote>
             </div>
             
             <p className="font-sans text-slate-500 leading-relaxed mb-6">
-              Harness Engineering không tập trung vào việc tạo ra một câu lệnh (prompt) thần thánh. Nó tập trung vào việc thiết kế một hệ sinh thái các công cụ, luồng ngữ cảnh và kiểm thử để bao bọc lấy AI model.
+              Chúng tôi là những kỹ sư tin rằng: Thay vì cố gắng "nhồi nhét" hướng dẫn vào một prompt duy nhất, chìa khóa để khai mở AI là thiết kế một hệ sinh thái mã nguồn mở bao gồm các công cụ, luồng ngữ cảnh và kiểm thử để bao bọc lấy model.
             </p>
 
             <div className="flex flex-wrap gap-3 mt-auto">
