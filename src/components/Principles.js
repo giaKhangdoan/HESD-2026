@@ -5,83 +5,51 @@ import { Moon, Puzzle, Unlock, Activity, GitBranch, ShieldCheck, Eye, Target, La
 const patterns = [
   { 
     id: '01', 
-    title: 'AutoDream', 
-    problem: 'Khi làm việc thời gian dài, bộ nhớ của Agent bị phình to (context rot) và chứa nhiều thông tin mâu thuẫn làm giảm chất lượng suy luận.', 
-    solution: 'Hệ thống ngầm tạo sub-agent tổng hợp quan sát, loại bỏ logic mâu thuẫn và nén thông tin thành "sự thật" rõ ràng khi đang idle.', 
-    icon: 'moon',
+    title: 'Single Source of Truth', 
+    problem: <>Quy trình làm việc không được lưu vào code sẽ khiến AI hoàn toàn mù tịt ở các phiên tiếp theo.</>, 
+    solution: <>Mọi luật lệ, ngữ cảnh đều phải ghi vào file. <span className="font-mono bg-blue-100 text-blue-700 px-1 rounded">Repository = Nguồn sự thật duy nhất</span>. Không nằm trong repo thì không tồn tại.</>, 
+    icon: 'branch',
     color: 'text-indigo-600 bg-indigo-50 border-indigo-200'
   },
   { 
     id: '02', 
-    title: 'Ambient Affordances', 
-    problem: 'Các hệ thống mã nguồn cũ (legacy) thiếu cấu trúc chuẩn, khiến AI dễ đi chệch hướng.', 
-    solution: 'Tích hợp "khả năng dễ điều khiển" từ đầu: Dùng kiểu dữ liệu mạnh (strongly typed), ranh giới rõ ràng hoặc framework trừu tượng hóa chi tiết.', 
-    icon: 'puzzle',
+    title: 'Reveal on Demand', 
+    problem: <>Hội chứng <span className="font-mono bg-amber-100 text-amber-700 px-1 rounded">Lost in the Middle</span> khiến AI quên hướng dẫn nếu nạp file document quá dài.</>, 
+    solution: <>Đập tan file hướng dẫn. Chỉ dùng file <span className="font-mono">AGENTS.md</span> ngắn gọn làm mục lục, AI sẽ đọc URL chi tiết khi thực sự cần.</>, 
+    icon: 'eye',
     color: 'text-amber-600 bg-amber-50 border-amber-200'
   },
   { 
     id: '03', 
-    title: 'Progressive Disclosure', 
-    problem: 'Việc nạp toàn bộ hàng tá công cụ cùng một lúc (như MCP) tiêu tốn một lượng token khổng lồ.', 
-    solution: 'Chỉ cung cấp metadata ban đầu (200 tokens). Khi Agent cần dùng công cụ nào, hệ thống mới mở rộng hướng dẫn và cấp phát tài nguyên động.', 
-    icon: 'unlock',
+    title: 'WIP = 1 (Work-In-Progress)', 
+    problem: <>Bản năng ôm đồm <span className="font-mono bg-emerald-100 text-emerald-700 px-1 rounded">Overreach</span> khiến AI sửa đổi lung tung gây nát luồng mã nguồn chính.</>, 
+    solution: <>Áp dụng kỷ luật thép với cấu trúc bộ ba: Mô tả hành vi + Lệnh kiểm tra + Trạng thái. Ép AI chỉ làm đúng 1 task tại 1 thời điểm.</>, 
+    icon: 'target',
     color: 'text-emerald-600 bg-emerald-50 border-emerald-200'
   },
   { 
     id: '04', 
-    title: 'Continuous Drift Sensors', 
-    problem: 'Nợ kỹ thuật hoặc sai lệch kiến trúc (architectural drift) tích tụ ngầm mà test ngắn hạn không phát hiện được.', 
-    solution: 'AI "lao công" (janitor army) liên tục quét nền độc lập để tìm dead code, phân tích bao phủ test, hoặc giám sát log anomalies.', 
-    icon: 'activity',
+    title: 'Three-Layer Termination Check', 
+    problem: <>Bệnh <span className="font-mono bg-rose-100 text-rose-700 px-1 rounded">Confidence Calibration Bias</span> làm AI tự đánh giá quá cao và tuyên bố chiến thắng sớm.</>, 
+    solution: <>Không cho kết thúc nếu chưa qua 3 cổng: Phân tích Cú pháp (Linter) ➔ Kiểm tra Hành vi (Unit) ➔ Luồng người dùng (E2E).</>, 
+    icon: 'layers',
     color: 'text-rose-600 bg-rose-50 border-rose-200'
   },
   { 
     id: '05', 
-    title: 'Subagent Isolation Models', 
-    problem: 'Sub-agents làm việc song song dễ can thiệp vào bộ nhớ của nhau hoặc làm hỏng mã nguồn chính.', 
-    solution: '3 mô hình cô lập: Fork (chung KV cache để chạy nhanh), Teammate (giao tiếp qua mailbox), Worktree (chạy trên Git branch riêng biệt).', 
-    icon: 'branch',
+    title: 'Clean Handoff', 
+    problem: <>Giới hạn cửa sổ ngữ cảnh khiến AI kiệt sức ở cuối phiên làm việc, dẫn đến bỏ mứa công việc.</>, 
+    solution: <>Bàn giao sạch qua 5 điều kiện bắt buộc: Build xanh, Test pass, Cập nhật <span className="font-mono">PROGRESS.md</span>, Xóa file rác, và Môi trường trơn tru.</>, 
+    icon: 'shield',
     color: 'text-blue-600 bg-blue-50 border-blue-200'
   },
   { 
     id: '06', 
-    title: 'Layered Permission Gates', 
-    problem: 'Cho phép AI tự do chạy các lệnh bash commands hoặc thay đổi database là rủi ro bảo mật thảm họa.', 
-    solution: 'Tách bạch "Model muốn làm gì" và "Hệ thống cho phép làm gì". Mọi công cụ phải qua các cổng kiểm duyệt bảo mật phân lớp (như GoClaw).', 
-    icon: 'shield',
+    title: 'Layered Observability', 
+    problem: <>Logs cơ bản không cho biết AI đang nghĩ gì (Tại sao làm) mà chỉ biết AI đã chạy lệnh gì (Đã làm gì).</>, 
+    solution: <>Thu thập khả năng quan sát kép. Mọi thông báo lỗi phải là <span className="font-mono bg-purple-100 text-purple-700 px-1 rounded">Actionable Error Feedback</span> để hướng dẫn AI cách tự sửa chữa.</>, 
+    icon: 'activity',
     color: 'text-purple-600 bg-purple-50 border-purple-200'
-  },
-  { 
-    id: '07', 
-    title: 'Reveal on Demand', 
-    problem: 'Hiệu ứng "Lost in the Middle" làm AI quên hướng dẫn nằm ở giữa các file documents khổng lồ.', 
-    solution: 'Đập tan các file lớn. Chỉ dùng AGENTS.md cực ngắn làm menu và đưa link tài liệu chi tiết (URL file) khi Agent thực sự cần.', 
-    icon: 'eye',
-    color: 'text-teal-600 bg-teal-50 border-teal-200'
-  },
-  { 
-    id: '08', 
-    title: 'WIP = 1 (Work-In-Progress)', 
-    problem: 'Bản năng "thấy gì sửa nấy" (Overreach) khiến AI thay đổi một đống code không liên quan gây nát project.', 
-    solution: 'Kỷ luật thép: Ép Agent chỉ làm đúng 1 task (việc đang làm = 1) tại 1 thời điểm. Xong việc A mới được chuyển sang việc B.', 
-    icon: 'target',
-    color: 'text-red-600 bg-red-50 border-red-200'
-  },
-  { 
-    id: '09', 
-    title: 'Three-Layer Termination Check', 
-    problem: 'AI thường xuyên bị ảo giác (hallucination) và "tuyên bố chiến thắng sớm" dù code chưa chạy được.', 
-    solution: 'Cấm Agent tự cho là xong nếu chưa vượt qua 3 lớp phòng ngự: Linter (Cú pháp) -> Unit Test (Hành vi) -> E2E Test (Luồng người dùng).', 
-    icon: 'layers',
-    color: 'text-cyan-600 bg-cyan-50 border-cyan-200'
-  },
-  { 
-    id: '10', 
-    title: 'Initialization Isolation', 
-    problem: 'Setup môi trường cài gói npm thường xuyên sinh ra lỗi phức tạp, làm AI loạn nhịp khi vừa cài đặt vừa code.', 
-    solution: 'Tách biệt bước khởi tạo. Phiên làm việc (Session) đầu tiên CHỈ dùng để cài đặt môi trường trơn tru. Tuyệt đối không code logic ở bước này.', 
-    icon: 'box',
-    color: 'text-fuchsia-600 bg-fuchsia-50 border-fuchsia-200'
   }
 ];
 

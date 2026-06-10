@@ -3,19 +3,14 @@ import { motion, AnimatePresence } from 'motion/react';
 import { FileText, BookOpen, Code, Terminal, Copy, Activity, ShieldCheck, CheckSquare, Download } from 'lucide-react';
 
 const resourceData = [
-  { id: 1, title: 'Linter Configuration (.eslintrc)', category: 'Maintainability', icon: 'code', desc: 'Ràng buộc mã tĩnh tự động' },
-  { id: 2, title: 'Structural Test Template', category: 'Maintainability', icon: 'check', desc: 'Chống kiến trúc bị thoái hóa (Drift)' },
-  { id: 3, title: 'Coding Conventions Guide', category: 'Architecture Fitness', icon: 'file', desc: 'Chuẩn thiết kế và đặt tên' },
-  { id: 4, title: 'Observability Log Standard', category: 'Architecture Fitness', icon: 'activity', desc: 'Định dạng log chuẩn để giám sát' },
-  { id: 5, title: 'Performance Benchmark Script', category: 'Architecture Fitness', icon: 'shield', desc: 'Kiểm tra ngưỡng chịu tải' },
-  { id: 6, title: 'Functional Spec Template', category: 'Behaviour', icon: 'book', desc: 'Đặc tả yêu cầu kinh doanh' },
-  { id: 7, title: 'BDD Test Suite (Cucumber)', category: 'Behaviour', icon: 'terminal', desc: 'Kiểm chứng hành vi thực tế' },
-  { id: 8, title: 'PROGRESS.md Template', category: 'State Management', icon: 'file', desc: 'Chống lo âu ngữ cảnh (Đã xong/Đang làm/Bị kẹt)' },
-  { id: 9, title: 'DECISIONS.md Template', category: 'State Management', icon: 'book', desc: 'Lưu trữ quyết định thiết kế cho phiên làm việc sau' },
-  { id: 10, title: 'Feature Lists JSON/MD', category: 'State Management', icon: 'code', desc: 'Bộ ba: Mô tả hành vi + Lệnh test + Trạng thái' }
+  { id: 1, title: 'AGENTS.md (Minimal)', category: 'Minimal Pack', icon: 'file', desc: 'Quy định luật lệ và ranh giới cho AI (50 dòng)', content: '# Hướng dẫn Cốt lõi\n1. Không dùng Tailwind nếu chưa hỏi.\n2. Cập nhật PROGRESS.md sau mỗi bước.\n3. Luôn test trước khi bàn giao.' },
+  { id: 2, title: 'feature_list.json', category: 'Minimal Pack', icon: 'code', desc: 'Khóa chặt các tính năng, tránh ôm đồm', content: '[\n  {\n    "id": "F1",\n    "name": "Auth",\n    "status": "pending",\n    "test_cmd": "npm run test:auth"\n  }\n]' },
+  { id: 3, title: 'init.sh', category: 'Minimal Pack', icon: 'terminal', desc: 'Script khởi tạo tự động, cô lập môi trường', content: '#!/bin/bash\necho "Initializing environment..."\nnpm ci\ncp .env.example .env\necho "Ready to code!"' },
+  { id: 4, title: 'PROGRESS.md Template', category: 'State Management', icon: 'check', desc: 'Chống lo âu ngữ cảnh (Đã xong/Đang làm/Bị kẹt)', content: '# Tiến độ hiện tại\n\n## Đã xong [x]\n- Thiết kế DB\n\n## Đang làm [/]\n- API Đăng nhập\n\n## Bị kẹt [!]\n- Lỗi CORS trên Staging' },
+  { id: 5, title: 'DECISIONS.md Template', category: 'State Management', icon: 'book', desc: 'Lưu trữ quyết định thiết kế cho phiên sau', content: '# Sổ tay Quyết định\n\n## 2026-06-10\n**Vấn đề:** Chọn thư viện Animation.\n**Quyết định:** Framer Motion.\n**Lý do:** Hỗ trợ exit animations tốt hơn.' }
 ];
 
-const categories = ['All', 'Maintainability', 'Architecture Fitness', 'Behaviour', 'State Management'];
+const categories = ['All', 'Minimal Pack', 'State Management'];
 
 const Resources = () => {
   const [activeTab, setActiveTab] = useState('All');
@@ -171,11 +166,14 @@ const Resources = () => {
                 </div>
                 
                 <button 
-                  onClick={() => alert('Đã copy ' + item.title + ' vào clipboard!')}
-                  className="w-full sm:w-auto flex items-center justify-center gap-2 px-6 py-2.5 bg-white border border-slate-200 rounded-xl text-sm font-semibold text-[#0a1b33] hover:bg-slate-50 hover:border-slate-300 transition-all shadow-sm"
+                  onClick={() => {
+                    navigator.clipboard.writeText(item.content);
+                    alert('Đã copy nội dung của ' + item.title + ' vào clipboard!');
+                  }}
+                  className="w-full sm:w-auto flex items-center justify-center gap-2 px-6 py-2.5 bg-white border border-slate-200 rounded-xl text-sm font-semibold text-[#0a1b33] hover:bg-slate-50 hover:border-slate-300 transition-all shadow-sm group-hover:border-blue-300 group-hover:text-blue-600"
                 >
-                  Copy
-                  <Copy className="w-4 h-4 text-slate-400" />
+                  Copy to clipboard
+                  <Copy className="w-4 h-4 text-slate-400 group-hover:text-blue-500" />
                 </button>
               </motion.div>
             ))}

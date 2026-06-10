@@ -192,6 +192,67 @@ const Concept = () => {
           </motion.div>
         </div>
 
+        {/* --- SECTION 2.5: AI TERMINOLOGY GRID --- */}
+        <div className="mb-24">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <h2 className="font-display text-[32px] md:text-[40px] font-semibold text-[#0a1b33] mb-4">
+              Từ Điển Hành Vi AI
+            </h2>
+            <p className="font-sans text-slate-500 max-w-2xl mx-auto">
+              Ngôn ngữ chung để gọi tên những "chứng bệnh" thường gặp của Agent.
+            </p>
+          </motion.div>
+
+          <motion.div 
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, margin: "-50px" }}
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
+          >
+            {/* Term 1 */}
+            <motion.div variants={itemVariants} className="p-6 bg-slate-50 border border-slate-200/60 rounded-3xl hover:bg-white hover:shadow-xl hover:-translate-y-1 hover:border-blue-400/30 transition-all duration-300 group">
+              <div className="font-mono text-xs font-bold text-blue-500 uppercase tracking-wider mb-3 group-hover:text-blue-600 transition-colors">#01</div>
+              <h4 className="font-display text-xl font-bold text-[#0a1b33] mb-3 group-hover:text-blue-600 transition-colors">Lost in the Middle</h4>
+              <p className="text-slate-500 text-sm leading-relaxed">
+                Tình trạng AI quên mất hướng dẫn cốt lõi nằm ở giữa những file tài liệu (Context) quá dài và cồng kềnh.
+              </p>
+            </motion.div>
+
+            {/* Term 2 */}
+            <motion.div variants={itemVariants} className="p-6 bg-slate-50 border border-slate-200/60 rounded-3xl hover:bg-white hover:shadow-xl hover:-translate-y-1 hover:border-blue-400/30 transition-all duration-300 group">
+              <div className="font-mono text-xs font-bold text-blue-500 uppercase tracking-wider mb-3 group-hover:text-blue-600 transition-colors">#02</div>
+              <h4 className="font-display text-xl font-bold text-[#0a1b33] mb-3 group-hover:text-blue-600 transition-colors">Overreach</h4>
+              <p className="text-slate-500 text-sm leading-relaxed">
+                Bản năng "thấy gì sửa nấy" (ôm đồm). AI tự động sửa các file không liên quan, phá hỏng cấu trúc hoạt động hiện tại.
+              </p>
+            </motion.div>
+
+            {/* Term 3 */}
+            <motion.div variants={itemVariants} className="p-6 bg-slate-50 border border-slate-200/60 rounded-3xl hover:bg-white hover:shadow-xl hover:-translate-y-1 hover:border-blue-400/30 transition-all duration-300 group">
+              <div className="font-mono text-xs font-bold text-blue-500 uppercase tracking-wider mb-3 group-hover:text-blue-600 transition-colors">#03</div>
+              <h4 className="font-display text-xl font-bold text-[#0a1b33] mb-3 group-hover:text-blue-600 transition-colors">Confidence Bias</h4>
+              <p className="text-slate-500 text-sm leading-relaxed">
+                Lệch chuẩn tự tin (Calibration Bias). Tình trạng AI thường ảo tưởng sức mạnh và "tuyên bố chiến thắng sớm".
+              </p>
+            </motion.div>
+
+            {/* Term 4 */}
+            <motion.div variants={itemVariants} className="p-6 bg-slate-50 border border-slate-200/60 rounded-3xl hover:bg-white hover:shadow-xl hover:-translate-y-1 hover:border-blue-400/30 transition-all duration-300 group">
+              <div className="font-mono text-xs font-bold text-blue-500 uppercase tracking-wider mb-3 group-hover:text-blue-600 transition-colors">#04</div>
+              <h4 className="font-display text-xl font-bold text-[#0a1b33] mb-3 group-hover:text-blue-600 transition-colors">Context Anxiety</h4>
+              <p className="text-slate-500 text-sm leading-relaxed">
+                Hội chứng "lo âu ngữ cảnh". Khi làm việc đa phiên, AI bị mất phương hướng vì không biết trước đó mình đã làm đến đâu.
+              </p>
+            </motion.div>
+          </motion.div>
+        </div>
+
         {/* --- SECTION 3: CORE MECHANISM (Light Theme Redesign) --- */}
         <div>
           <motion.div 
@@ -232,7 +293,7 @@ const Concept = () => {
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
-            className="bg-white border border-slate-200/80 rounded-[40px] p-8 md:p-16 shadow-[0_20px_60px_-15px_rgba(0,0,0,0.05)] relative overflow-hidden"
+            className="bg-white border border-slate-200/80 rounded-[40px] p-8 md:p-16 lg:pb-48 shadow-[0_20px_60px_-15px_rgba(0,0,0,0.05)] relative overflow-hidden"
           >
             {/* Soft background glow */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-blue-50 rounded-full blur-[120px] pointer-events-none" />
@@ -302,14 +363,11 @@ const Concept = () => {
               </div>
 
               {/* Loop Back Arrow for the Closed-Loop effect */}
-              <div className="hidden lg:block relative mt-16 text-center">
-                <div className="flex justify-center items-center gap-4 opacity-60 hover:opacity-100 transition-opacity">
-                  <div className="h-px w-64 bg-gradient-to-r from-transparent to-slate-300"></div>
-                  <div className="font-mono text-[11px] text-slate-500 uppercase tracking-widest bg-white px-4 py-1.5 border border-slate-200 rounded-full flex items-center gap-2 shadow-sm">
-                    <RefreshCcw className="w-3.5 h-3.5 animate-spin-slow text-blue-500" /> Loop Repeats
-                  </div>
-                  <div className="h-px w-64 bg-gradient-to-l from-transparent to-slate-300"></div>
-                </div>
+              <div className="hidden lg:block absolute top-[40px] left-[10%] right-[10%] h-[230px] border-b-2 border-l-2 border-r-2 border-dashed border-slate-300 rounded-b-[60px] pointer-events-none z-0">
+                 {/* Feedback Label */}
+                 <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 bg-white px-5 py-2 border border-blue-200 rounded-full font-mono text-[12px] text-blue-600 font-bold uppercase tracking-widest flex items-center gap-2 shadow-md">
+                   <RefreshCcw className="w-4 h-4 animate-spin-slow" /> Runtime Feedback Loop
+                 </div>
               </div>
 
             </div>

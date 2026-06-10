@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'motion/react';
-import { ChevronRight, ShieldAlert, FileCode } from 'lucide-react';
+import { ChevronRight, Quote } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import Marquee from './Marquee';
 
@@ -60,35 +60,29 @@ const Hero = () => {
           </motion.div>
         </div>
 
-        {/* Manifesto Floating Card */}
+        {/* Concept Floating Card */}
         <motion.div 
           initial={{ opacity: 0, x: 20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-          className="md:absolute md:bottom-10 md:right-10 z-20 w-[calc(100%-3rem)] mx-6 md:mx-0 md:w-[420px] mb-6 md:mb-0 p-6 md:p-8 bg-white/70 backdrop-blur-2xl border border-white/50 rounded-[32px] shadow-2xl"
+          className="md:absolute md:bottom-10 md:right-10 z-20 w-[calc(100%-3rem)] mx-6 md:mx-0 md:w-[440px] mb-6 md:mb-0 p-8 bg-white/80 backdrop-blur-3xl border border-white/60 rounded-[32px] shadow-[0_20px_40px_-15px_rgba(0,0,0,0.1)] relative overflow-hidden group"
         >
-          <h3 className="font-display font-semibold text-[#0a1b33] text-[17px] mb-5 flex items-center gap-3">
-            <span className="w-2 h-2 rounded-full bg-blue-500 shadow-[0_0_8px_rgba(59,130,246,0.8)] animate-pulse"></span>
-            Tuyên ngôn Cộng đồng
-          </h3>
-          <div className="space-y-5">
-            <div className="flex gap-4 items-start group">
-              <div className="w-10 h-10 rounded-2xl bg-orange-50 flex items-center justify-center shrink-0 border border-orange-100 group-hover:scale-110 transition-transform">
-                <ShieldAlert className="w-5 h-5 text-orange-500" />
-              </div>
-              <div>
-                <div className="font-bold text-[#0a1b33] text-[14px]">Đừng vội đổi Model</div>
-                <div className="text-slate-500 text-[13px] mt-1 leading-relaxed">Khi AI thất bại, hãy kiểm tra Harness trước khi đổi sang model đắt tiền hơn.</div>
-              </div>
-            </div>
-            <div className="flex gap-4 items-start group">
-              <div className="w-10 h-10 rounded-2xl bg-emerald-50 flex items-center justify-center shrink-0 border border-emerald-100 group-hover:scale-110 transition-transform">
-                <FileCode className="w-5 h-5 text-emerald-500" />
-              </div>
-              <div>
-                <div className="font-bold text-[#0a1b33] text-[14px]">Single Source of Truth</div>
-                <div className="text-slate-500 text-[13px] mt-1 leading-relaxed">Repository là chân lý duy nhất. Những gì không lưu vào file = Không tồn tại với AI.</div>
-              </div>
+          <div className="absolute top-0 right-0 w-32 h-32 bg-blue-400/10 rounded-full blur-3xl group-hover:bg-blue-400/20 transition-colors pointer-events-none" />
+          
+          <div className="mb-5">
+            <Quote className="w-8 h-8 text-blue-300" />
+          </div>
+          
+          <div className="space-y-6 relative z-10">
+            <p className="font-display text-[#0a1b33] text-[17px] md:text-[19px] leading-relaxed font-medium">
+              Chuyển đổi từ việc <span className="text-blue-600">"Viết prompt để xin AI làm việc"</span> sang <span className="text-blue-600">"Xây dựng một hệ thống quy trình, giới hạn và kiểm thử để ép AI làm việc kỷ luật"</span>.
+            </p>
+            
+            <div className="flex items-center gap-3 pt-5 border-t border-slate-200/60">
+              <span className="w-2 h-2 rounded-full bg-blue-500 shadow-[0_0_8px_rgba(59,130,246,0.8)] animate-pulse"></span>
+              <p className="text-slate-500 text-[12px] font-bold uppercase tracking-wider font-mono">
+                Harness Engineering
+              </p>
             </div>
           </div>
         </motion.div>
