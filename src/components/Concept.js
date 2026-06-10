@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'motion/react';
-import { MonitorSmartphone, RefreshCw, Network, TrendingUp, Sparkles, FileText, Bot, RefreshCcw, ShieldCheck, CheckCircle, MessageSquare, FileCode, GitBranch, Terminal, Box, Database } from 'lucide-react';
+import { MonitorSmartphone, RefreshCw, Network, TrendingUp, Sparkles, FileText, RefreshCcw, MessageSquare, FileCode, GitBranch, Terminal, Box, Database } from 'lucide-react';
 
 const stats = [
   { icon: <MessageSquare className="w-8 h-8" />, number: '1,200+', label: 'Thành viên Discord' },
